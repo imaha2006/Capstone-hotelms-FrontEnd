@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
     const navigate = useNavigate();
+    //عشان اغير واقراء قيم المتغيرات
     let [username, setname] = useState("")
     let [password, setpassword] = useState("")
 
@@ -18,30 +19,35 @@ export default function Login(props) {
     function handlepassword(event) {
         setpassword((password = event.target.value));
     }
+    //json
     let myAdmin={
         username:username,
         password:password,
 
      }
-function handleClick(){
-    axios({
-        method:'post',
-        url:'api/admin/add',
-        data:myAdmin,
-    })
-}
+// function handleClick(){
+//     axios({
+//         method:'post',
+//         url:'api/admin/add',
+//         data:myAdmin,
+//     })
+// }
     function handleSubmit(event) {
         event.preventDefault();
+        //نرسل طلب requse
         axios({
             method: "get",
             url: "api/admin/login",
             params: { username: username, password: password }
-        })
+        })//لمايرجع نفذ هذ الشي
+
             .then((res => {
                 console.log(res.data)
                 if (res.data == "welcome you Authentication") {
+
                localStorage.setItem("LogIn", "welcome you Authentication")//noon
                   // props.handleLogin();
+                  // ظ انقلني لهذي الصفحه
                   navigate('/AdminHome');
                   
                 }
@@ -69,6 +75,7 @@ function handleClick(){
                 <input
                   type="text"
                   name="password"
+                  //attrubut
                   onChange={handlepassword}
                   placeholder="Password"
                 />

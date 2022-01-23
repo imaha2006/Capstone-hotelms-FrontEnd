@@ -10,9 +10,11 @@ export default class MyBranchs extends Component {
         this.state = {
             BranchsList: [],
         };
+        // عشان نعمل ربط مع this 
         this.handleChange=this.handleChange.bind(this)
         this.handleClickAdd=this.handleClickAdd.bind(this)
     }
+    // عبارة عن function
     componentDidMount() {
         axios.get("api/branch").then(response => {
             const BranchsList = response.data
@@ -59,23 +61,27 @@ let n=localStorage.getItem("LogIn")//
      
     });}//IF
     }
+
    handleChange(event){
     console.log(event.target.name);
     console.log(event.target.value);
     // this.setState({[event.targert.name]:event.target.value}) //
     let name=event.target.name
     let value=event.target.value
+    // عشان اخزن قيمة المتغير في state
     this.setState({[name]:value})
     
  }
     deleteUseGarden(id) {
        // console.log("Delete after Entering")
+      //  عشان ارسل قيمة مع string$
         axios.delete(`api/branch/delete/${id}`)
             .then(res => {
                 const BranchsList = this.state.BranchsList.filter(item => item.id!== id);
                 this.setState({ BranchsList });
             })
     }
+    
 render() {
   let {BranchsList}=this.state
 let branches=[]

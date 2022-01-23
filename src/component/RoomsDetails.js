@@ -28,35 +28,43 @@ this.state = {
         .then(res => {
            /*  const RoomList = this.state.RoomList.filter(item => item.numberRoom !== numberRoom);
             this.setState({ RoomList }); */
+            // من هنا جبنا branch 
             this.getBranchRooms()
         })
 }
 
-
+// 
 getBranchRooms(){
+  // url لصفحةالي انافيها يحتوي على branch id
   let pathname=window.location.pathname
  
-  let branch   
+  let branch 
+   // نتاكد انه في قيمه url
   if (pathname) {
     let patharray=pathname.split("/")
+    // branch مخزنه index رقم 2
    branch=patharray[2]
   } 
  
     
-    
+    // end point
         axios.get("/api/room").then(response => {
            const RoomList = response.data
            console.log(" RoomList");
            console.log( RoomList);
            let branch_rooms=[]
+          //  arr الي خزنا فيها
            RoomList.forEach(item=>{
+            //  اي وحده فيها تساوي branch
              if (item.branch.id==branch) {
+              //  الي خاصين في هذا branch
                branch_rooms.push(item)
              }
            })
          //let barnch_rooms=RoomList.filter(item=>item.brach.id==branch)
          console.log("barnch_rooms");
          console.log(branch_rooms);
+        //  خزناها هنا
          this.setState({branch_rooms
          })
        }); 
