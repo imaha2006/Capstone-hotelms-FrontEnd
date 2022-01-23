@@ -16,7 +16,7 @@ export default class MyBranchs extends Component {
     }
     // عبارة عن function
     componentDidMount() {
-        axios.get("api/branch").then(response => {
+        axios.get("https://hotelmanagmentplus.herokuapp.com/api/branch").then(response => {
             const BranchsList = response.data
             
             this.setState({ BranchsList });
@@ -37,7 +37,7 @@ let n=localStorage.getItem("LogIn")//
 
     axios({
     method:'post',
-    url:'api/branch/add',
+    url:'https://hotelmanagmentplus.herokuapp.com/api/branch/add',
       data: {
         id:this.state.id,
         branchName:this.state.branchName,
@@ -53,7 +53,7 @@ let n=localStorage.getItem("LogIn")//
     .then((res)=>{
       alert("New branch was aded successfully")
       //display branches again
-      axios.get("api/branch").then(response => {
+      axios.get("https://hotelmanagmentplus.herokuapp.com/api/branch").then(response => {
         const BranchsList = response.data
         
         this.setState({ BranchsList });
@@ -75,7 +75,7 @@ let n=localStorage.getItem("LogIn")//
     deleteUseGarden(id) {
        // console.log("Delete after Entering")
       //  عشان ارسل قيمة مع string$
-        axios.delete(`api/branch/delete/${id}`)
+        axios.delete(`https://hotelmanagmentplus.herokuapp.com/api/branch/delete/${id}`)
             .then(res => {
                 const BranchsList = this.state.BranchsList.filter(item => item.id!== id);
                 this.setState({ BranchsList });

@@ -24,7 +24,7 @@ this.state = {
       
    }
    deleteUseGarden(numberRoom) {
-    axios.delete(`/api/room/delete/${numberRoom}`)
+    axios.delete(`https://hotelmanagmentplus.herokuapp.com/api/room/delete/${numberRoom}`)
         .then(res => {
            /*  const RoomList = this.state.RoomList.filter(item => item.numberRoom !== numberRoom);
             this.setState({ RoomList }); */
@@ -48,7 +48,7 @@ getBranchRooms(){
  
     
     // end point
-        axios.get("/api/room").then(response => {
+        axios.get("https://hotelmanagmentplus.herokuapp.com/api/room").then(response => {
            const RoomList = response.data
            console.log(" RoomList");
            console.log( RoomList);
@@ -92,7 +92,7 @@ getBranchRooms(){
     
         axios({
         method:'post',
-        url:'/api/room/add',
+        url:'https://hotelmanagmentplus.herokuapp.com/api/room/add',
           data: MyRoom,
         }).then(res=>{
           alert("New room was added successfuly")

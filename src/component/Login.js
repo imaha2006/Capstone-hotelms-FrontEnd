@@ -37,7 +37,7 @@ export default function Login(props) {
         //نرسل طلب requse
         axios({
             method: "get",
-            url: "api/admin/login",
+            url: "https://hotelmanagmentplus.herokuapp.com/api/admin/login",
             params: { username: username, password: password }
         })//لمايرجع نفذ هذ الشي
 

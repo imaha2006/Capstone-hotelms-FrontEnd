@@ -20,7 +20,7 @@ export default class MealsDetails extends Component {
       
    }
    deleteUseGarden(nameMeal) {
-    axios.delete(`/api/Restaurant/delete/${nameMeal}`)
+    axios.delete(`https://hotelmanagmentplus.herokuapp.com/api/Restaurant/delete/${nameMeal}`)
         .then(res => {
           
             /* const MealList = this.state.MealList.filter(item => item.nameMeal !== nameMeal);
@@ -30,7 +30,7 @@ export default class MealsDetails extends Component {
 }
     componentDidMount() {
    
-            axios.get("/api/Restaurant").then(response => {
+            axios.get("https://hotelmanagmentplus.herokuapp.com/api/Restaurant").then(response => {
                 const MealList = response.data
                 this.setState({ MealList });
                
@@ -50,7 +50,7 @@ export default class MealsDetails extends Component {
      
         
         
-            axios.get("/api/Restaurant").then(response => {
+            axios.get("https://hotelmanagmentplus.herokuapp.com/api/Restaurant").then(response => {
               const MealList = response.data
               console.log(" MealList");
               console.log( MealList);
@@ -103,7 +103,7 @@ export default class MealsDetails extends Component {
     }
         axios({
         method:'post',
-        url:'/api/Restaurant/add',
+        url:'https://hotelmanagmentplus.herokuapp.com/api/Restaurant/add',
           data: MyMeal,
         }).then(res=>{
           alert("New Meal was added successfully")
